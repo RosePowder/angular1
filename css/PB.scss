@@ -1,0 +1,389 @@
+* {margin: 0;padding: 0;text-decoration: none;list-style: none;font-family: "微软雅黑";box-sizing: border-box;}
+.fl {float: left;}
+.fr {float: right;}
+.clear {clear: both;}
+.ellipsis {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+body {
+    width: 100%;
+    height: 100%;
+}
+nav {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 10%;
+    height: 50px;
+    line-height: 50px;
+    background-color: rgba(255,255,255,.92);
+    .nav-wrapper {
+        .brand-logo {
+            font-family: "agency fb";
+            font-weight: 800;
+            color: #B85F7F;
+        }
+        ul li a {color: #333;}
+        ul li.active,ul li:hover {
+            background-color: #B85F7F;
+            a {color: #fff;}
+        }
+    }
+}
+section {
+    .tmp1 {
+        header.row {
+            padding: 50px 8%;
+            height: 400px;
+            margin-bottom: 0;
+            background-image: url("../img/banner.jpg");
+            background-size: cover;
+            background-position-x: -50%;
+            background-position-y: 50px;
+            .left {
+                margin-top: 11% !important;
+                margin-left: 30% !important;
+                text-align: center;
+                @media only screen and (max-width:1100px){
+                    color: #fff;
+                }
+            }
+        }
+        .content.row {
+            background-color: rgba(135,0,219,.2);
+            padding: 20px 8%;
+            margin-bottom: 0;
+            .l3 {
+                .collapsible {
+                    span.badge.new {
+                        background-color: #26a69a !important;
+                    }
+                    .collapsible-header:hover {
+                        background-color: #B85F7F;
+                        color: #fff;
+                    }
+                    .collapsible-body {
+                        .collection {
+                            .collection-item.avatar {
+                                min-height: 60px !important;
+                                background-color: rgba(255,255,255,.5);
+                                a {
+                                    display: inline-block;
+                                    padding-top: 10px;
+                                    color: #B85F7F;
+                                }
+                            }
+                            .collection-item.avatar:hover {
+                                background-color: rgba(184,95,127,.2);
+                                a {
+                                    color: #333;
+                                }
+                            }
+                        }
+                    }
+                }
+                .history {
+                    ul.tabs {
+                        li.tab {
+                            width: 48%;
+                            a.active {
+                                color: #B85F7F;
+                            }
+                            a {
+                                color: #333;
+                            }
+                        }
+                    }
+                    #test1 {
+                        ul {
+                            background-color: rgba(255,255,255,.6);
+                        }
+                        ul li.col {
+                            padding: 0 0.3rem;
+                            .card {
+                                background-color: rgba(255,255,255,.3);
+                                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 0 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                                a.card-image {
+                                    display: block;
+                                    img {
+                                        opacity: 0.9;
+                                    }
+                                    .card-title {
+                                        width: 100%;
+                                        background-color: rgba(0,0,0,.3);
+                                        text-align: center;
+                                        padding: 0;
+                                        color: #fff;
+                                        font-size: 0.8em;
+                                        font-weight: 200;
+                                    }
+                                }
+                                .card-content {
+                                    padding: 0;
+                                    text-align: center;
+                                    font-size: 0.8em;
+                                }
+                            }
+                            .card:hover {
+                                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 2px 10px 0 rgba(0, 0, 0, 0.5), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                            }
+                        }
+                    }
+                    #test2 {
+                        ul.collapsible {
+                            li {
+                                .collapsible-header {
+                                    padding: 0.1rem;
+                                    img.col {
+                                        width: 46px;
+                                        height: 46px;
+                                        padding: 0.1rem;
+                                    }
+                                    span {
+                                        padding-right: 0;
+                                    }
+                                }
+                                .collapsible-body {
+                                    padding: 0.5rem;
+                                    p {
+                                        width: 100%;padding: 0;
+                                        font-size: 0.7rem;
+                                        display: -webkit-box;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis !important;
+                                        -webkit-line-clamp:2;
+                                        -webkit-box-orient:vertical;
+                                    }
+                                    p:hover{
+                                        transition: all 100ms ease-in;
+                                        font-size: 1rem;
+                                        -webkit-line-clamp:inherit;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .l9 {
+                .collapsible{
+                    li.xq{
+                        margin-bottom:20px ;
+                        .collapsible-header{
+                            .collection{
+                                .collection-item.avatar{
+                                    padding:10px 0;
+                                    .head{
+                                        width: 70px;height: 70px;
+                                        overflow: hidden;border-radius: 10px;
+                                        text-align: center;
+                                        img{width: 100;height: 100%;}
+                                    }
+                                    .head-right{
+                                        padding: 0 20px;color: #888;
+                                        p{font-size: 1.2rem;margin-bottom: 1rem;color: #333;
+                                             span{margin-left: 1rem;font-size: 0.8rem;color: #888;}
+                                        }
+                                        i{margin: 0 0 0 2rem;line-height: 1.6rem;}
+                                    }
+                                }
+                            }
+                        }
+                        .collapsible-body{
+                            .card {
+                                margin: 0;
+                                .card-content{
+                                    p{padding: 0;margin-bottom: 10px;}
+                                }
+                                .card-action {
+                                    background-color: rgba(231,204,248,.6);
+                                    padding-top:5px;
+                                    ul.suosuo-p-gro{
+                                        li{
+                                            a.suosuo-p{
+                                                display: inline-block;
+                                                padding: 0.3rem 0.8rem;margin-right: 14px;
+                                                i{margin-right: 5px;color: #D0D0D0;font-size: 20px;}
+                                                span{line-height: 1.5rem;color: #B85F7F;}
+                                            }
+                                            a.suosuo-p:hover{background-color: rgba(255,255,255,.5);color: #fff;}
+                                            span.after-fgx{
+                                                font-size: 0;
+                                                width: 1px; height: 15px;
+                                                margin-right: 15px;
+                                                border-width: 0 1px 0 0;
+                                                border-style: solid;
+                                                overflow: hidden;
+                                                display: inline-block;
+                                                line-height: 0;
+                                                vertical-align: 8px;color: #aaa;
+                                            }
+                                        }
+                                        li.active{a.suosuo-p i{color: #B85F7F;}}
+                                    }
+                                    ul.suosuo-friends-content{
+                                        li.suosuo-friend{
+                                            margin: 10px 0;
+                                            .head{
+                                                width: 40px;height: 40px;border-radius: 10px;
+                                                background-size: cover;
+                                            }
+                                            .content{
+                                                padding: 0 1rem;display: block;
+                                                a{display: block;color: #B85F7F;}
+                                                a:hover{text-decoration: underline;color: #B85F7F;}
+                                            }
+                                            a.btn-remove{color: #ccc;cursor: pointer;}
+                                            a.btn-remove:hover{color: #888;}
+                                        }
+                                    }
+                                    .suosuo{
+                                        margin-top: 10px;
+                                        textarea{
+                                            padding: 10px;
+                                            width: 100%;height: 3rem;
+                                            transition: all 500ms;
+                                        }
+                                        textarea:focus{
+                                            border: none;height: 5rem;
+                                        }
+                                        .btn{
+                                            background-color: rgba(255,255,255,0);
+                                            color: #444;
+                                        }
+                                        .btn:hover{
+                                            background-color: #B85F7F;color: #fff;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .tmp2{
+        padding:50px 8%;
+        ul.row{
+            width: 1200px;margin: 10px auto;
+            li.col.l3{
+                padding: 10px;
+                border: 1px solid #ccc;overflow: hidden;
+                img{display: block;width: 100%;height: auto;}
+                p{ font-size: 18px;color: #333;padding: 16px;}
+            }
+        }
+        ul:after{
+            content: '';display: block;height: 0;clear: both;visibility: hidden;
+        }
+    }
+    .tmp3{
+        padding:50px 8%;
+        .bg-fixed{
+            z-index: -1;
+            position: fixed;top: 0;left: 0;
+            width: 100%;height: 100%;
+            img{width: 100%;}
+        }
+        header{
+            color: #B85F7F;
+            text-align: center;
+            h2{font-family:"agency fb";}
+            p{font-family: "微软雅黑";font-size: 1.5rem;}
+        }
+        article{
+            .card{
+                background-color: transparent;
+                .card-content{
+                    background-color: rgba(231,204,248,.6);
+                    ul.addZuji{
+                        border: 1px solid #333;border-radius:20px 20px 0 20px;
+                        height: 6em;line-height: 6em;
+                        display: flex;overflow: hidden;
+                        li{overflow: hidden;
+                            input{
+                                height: 100%;padding: 0  20px;
+                                transition: all 500ms;
+                                border: none;
+                            }
+                            input:focus{box-shadow: none;}
+                        }
+                        li.addBtn{
+                            text-align: center;border-left: 1px solid #B85F7F;
+                            a{color: #B85F7F;}
+                        }
+                        li.addBtn:hover{
+                            background-color: #B85F7F;
+                            a{color: #fff;}
+                        }
+                    }
+                }
+                .card-action {
+                    background-color: rgba(255,255,255,.2);
+                    padding-top:5px;
+                    ul.zuji-firends-content{
+                        .row{margin: 0;}
+                        li.zuji-firend{
+                            padding: 20px 0;border-bottom: 1px solid #888;
+                            .col{padding: 0;}
+                            .head{
+                                width: 50px;height: 50px;border-radius: 10px;
+                                background-size: cover;
+                            }
+                            div.l11{
+                                ol.zuji-firend-content{
+                                    li{
+                                        padding-left:1rem;
+                                        a:hover{text-decoration: underline;color: #B85F7F;}
+                                        a.btn-remove{color: #ccc;cursor: pointer;}
+                                        a.btn-remove:hover{color: #888;}
+                                    }
+                                    li.content-name{
+                                        a{display: block;color: #B85F7F;}
+                                        
+                                    }
+                                    li.content{
+                                        width:95%;margin: 14px 0;
+                                        span{
+                                        }
+                                    }
+                                }
+                                .zuji-firend-time{padding-left: 14px;}
+                                
+                            }
+                        }
+                        li:last-child{border-bottom: none;}
+                    }
+                }
+            }
+        }
+    }
+}
+//go top
+.btn-floating {
+    position: relative;
+    padding: 0;
+    display: inline-block;
+    overflow: hidden;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    line-height: 40px;
+    color: #B85F7F;
+    border: 1px solid #333;
+    background-color: #fff;
+    transition: 0.3s;
+    cursor: pointer;
+    vertical-align: middle;
+    text-align: center;
+}
+.btn-floating:hover {
+    color: #fff;
+    background-color: #B85F7F;
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>登陆</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<style type="text/css">
+		*{margin: 0;box-sizing: border-box;}
+			body{
+				width: 100%;height: auto;padding:10% 20%;
+				background-image: url(img/edu-3.jpg);
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+			}
+			.container{
+				position: relative;
+				width: 80%;height: 400px;
+				background-color: rgba(255,255,255,.8);
+				margin:-5px 44px ;padding:5% 10% ;
+			}
+			input{
+				line-height: 2em;width: 80%;
+				border: none;
+				border-bottom: 1px solid #333;
+				background-color: transparent;
+			}
+			input:focus{
+				box-shadow: none;
+				border: none;
+				border-bottom: 1px solid #B85F7F;
+			}
+			pre{
+				color: #666;margin: 20px;
+			}
+			.btn{
+				position: absolute;right: 100px;bottom: 30px;
+				padding:10px 20px;
+			}
+			.btn:hover{
+				background-color: #B85F7F;
+			}
+			.btn a{
+				text-decoration: none;
+				color: #B85F7F;
+			}
+			.btn:hover a{
+				color: #fff;
+			}
+		</style>
+		<script src="js/angular.min.js"></script>
+	</head>
+	<body ng-app="app" ng-controller="Controller">
+		<div class="container">
+			<h1 style="font-family:'宋体';color: #B85F7F;text-align: center;margin-bottom: 30px;">登陆 </h2>
+			<form novalidate name="myForm">
+				<span>用 户 名:</span>
+				<input type="text" name="myText" ng-model="name" ng-minlength="4" ng-maxlength="10" ng-pattern="/^[a-zA-Z]+$/" ng-keyup="sayMsg1(myForm.myText.$error)" />
+				<pre ng-repeat="nameMsg in nameObj.nameMsgs | filter:nameObj.type ">{{nameMsg.msg}}</pre><br />
+				
+				<span>输入密码:</span>
+				<input type="password" name="myPassword" ng-model="password" ng-minlength="8" ng-maxlength="15" ng-pattern="/^[a-z0-9]+$/" ng-keyup="sayMsg2(myForm.myPassword.$error)" required/>
+				<pre ng-repeat="passwordMsg in passwordObj.passwordMsgs | filter:passwordObj.type ">{{passwordMsg.msg}}</pre><br />
+			</form>	
+			<div class="divider" style="height: 1px;background-color: #ccc;"></div>
+			<div class="btn" ng-click="load()">
+				<a href="javascript:;" class=" modal-action waves-effect waves-green btn-flat">登陆</a>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var app = angular.module('app',[]);
+			app.factory('nameService',function(){
+				//定义提示信息的数据
+				return{
+					type : 'default',
+					nameMsgs : [
+						{name:'default',msg:'请输入用户名'},
+						{name:'minlength',msg:'不得少于4位'},
+						{name:'maxlength',msg:'至多10位'},
+						{name:'pattern',msg:'只能输入字母'},
+						{name:'required',msg:'请输入用户名'},
+						{name:'pass',msg:'用户名正确'}
+					]
+				}
+			})
+			app.factory('passwordService',function(){
+				//定义提示信息的数据
+				return{
+					type : 'default',
+					passwordMsgs : [
+						{password:'default',msg:'请输入密码'},
+						{password:'minlength',msg:'不得少于8位'},
+						{password:'maxlength',msg:'至多15位'},
+						{password:'pattern',msg:'只能输入小写字母和数字'},
+						{password:'required',msg:'请输入密码'},
+						{password:'pass',msg:'密码格式输入正确'}
+					]
+				}
+			})
+			app.controller('Controller',['$scope','nameService','passwordService',function($scope,nameService,passwordService){
+				$scope.nameObj = nameService;
+				$scope.sayMsg1 = function(err){
+					for (var item in err) {
+//						console.log(err[item]);
+						if (err[item] === true) {
+							$scope.nameObj.type = item
+							return;
+						}
+					}
+					$scope.nameObj.type = 'pass'
+				}
+				$scope.passwordObj = passwordService;
+				$scope.sayMsg2 = function(err){
+					for (var item in err) {
+//						console.log(err[item]);
+						if (err[item] === true) {
+							$scope.passwordObj.type = item
+							return;
+						}
+					}
+					$scope.passwordObj.type = 'pass'
+				}
+				$scope.load = function(){
+//					if () {
+					window.location.href = "index.html";
+//					}
+				}
+			}])
+		</script>
+	</body>
+</html>

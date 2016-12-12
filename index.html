@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>个人网站</title>
+		<meta name="Keywords" content="李佳佳,个人简历,web前端工程师" />
+		<meta name="Description" content="web前端工程师" />
+		<!--设置IE 强制用最高版本渲染-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- 设置360 搜狗  让双核浏览器强制用webkit内核渲染 -->
+		<meta name="renderer" content="webkit">
+		<!-- 避免百度代码嵌套-->
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		
+		<script src="js/angular.min.js"></script>
+		<script src="js/angualr-route.js"></script>
+		<script src="js/angular-sanitize.js"></script>
+		<script src="js/angular-animate.min.js"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/materialize.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/PB.css"/>
+	</head>
+	<body ng-app="app">
+		<!--导航-->
+		<nav>
+			<div class="nav-wrapper ">
+				<!--logo-->
+				<a href="#!" class="brand-logo left">RosePowder</a>
+				<!--mobile menu-->
+				<a href="#" data-activates="mobile-demo" class="right button-collapse">
+					<i class="material-icons">menu</i>
+				</a>
+				<!--PC 端-->
+				<ul id="nav-mobile" class="right hide-on-small-and-down">
+					<li ng-class="{active:addStatu === '/moodMine'}"><a href="#moodMine">心情宝库</a></li>
+					<li ng-class="{active:addStatu === '/picCollection'}"><a href="#picCollection">相册集</a></li>
+					<li ng-class="{active:addStatu === '/massageBoard'}"><a href="#massageBoard">留言板</a></li>
+					<div class="clearfix"></div>
+				</ul>
+				<!--移动端-->
+				<ul id="mobile-demo" class="side-nav">
+					<li ng-class="{active:addStatu === '/moodMine'}"><a href="#moodMine">心情宝库</a></li>
+					<li ng-class="{active:addStatu === '/picCollection'}"><a href="#picCollection">相册集</a></li>
+					<li ng-class="{active:addStatu === '/massageBoard'}"><a href="#massageBoard">留言板</a></li>
+					<div class="clearfix"></div>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
+		</nav>
+	    <!--头部-->
+		
+		<!--content-->
+		<section>
+		    <!-- 存放模板视图的地方 -->
+		    <div ng-view></div>
+		    <!--定义模板1--心情宝库 moodMine---->
+		    <script type="text/ng-template" id="tmp1">
+		    	<div class="tmp1">
+			    	<header class="row">
+						<div class="col l4 left">
+							<p>多想，吟诗挥亳，我落笔，你研墨。</p>
+							<p>我为你彼岸灯火，心之所向，你为我步步倾心，步步生莲。</p>
+							<p>今生不求繁华喧嚣，但愿红尘共退，与你温梅煮酒，修篱种菊，不离不弃。</p>
+						</div>
+					</header>
+		    		<div class="content row">
+		    			<div class="col l3 ">
+		    				<ul class="collapsible" data-collapsible="accordion">
+							    <li>
+							      	<div class="collapsible-header active">
+							      		<i class="material-icons" style="color: #06f;">supervisor_account</i>
+							      		好友动态
+							      		<span class="iconfont" ng-class="{'icon-jiantouyoujiantou1':!isDown,'icon-arrowup':isDown}"></span>
+							      	</div>
+							      	<div class="collapsible-body" ng-repeat="friendList in friendLists ">
+							      		<ol class="collection">
+										    <li class="collection-item avatar">
+										      <img src="{{friendList.headSrc}}" alt="" class="circle">
+										      <a href="" class="title">{{friendList.name}}<span class="new badge">{{friendList.new}}</span></a>
+										    </li>
+										</ol>
+							      	</div>
+							    </li>
+							    <li>
+							    	<div class="collapsible-header">
+							    		<i class="material-icons" style="color: #f34;">star</i>
+							    		特别关注
+							    		<span class="iconfont" ng-class="{'icon-jiantouyoujiantou1':!isDown,'icon-arrowup':isDown}"></span>
+							    	</div>
+							      	<div class="collapsible-body" ng-repeat="friendFocusList in friendFocusLists ">
+							      		<ol class="collection">
+										    <li class="collection-item avatar">
+										      <img src="{{friendFocusList.headSrc}}" alt="" class="circle">
+										      <a href=" " class="title">{{friendFocusList.name}}</a>
+										    </li>
+										</ol>
+							      	</div>
+							    </li>
+							    <li>
+							    	<div class="collapsible-header"><i class="material-icons" style="color: #1A237E;">snooze</i>与我相关</div>
+							    </li>
+							    <li>
+							    	<div class="collapsible-header"><i class="material-icons" style="color: #0089EC;">turned_in</i>我的收藏</div>
+							    </li>
+							    <li>
+							    	<div class="collapsible-header"><i class="material-icons" style="color: #B88347;">library_books</i>那年今日</div>
+							    </li>
+							</ul>
+		    				<div class="history">
+							    <ul class="tabs">
+							        <li class="tab"><a class="active" href="#test1">浏览用户</a></li>
+							        <li class="tab"><a href="#test2">浏览历史</a></li>
+							    </ul>
+							    <div id="test1" class="tab-content">
+							    	<ul>
+							    		<li class=" col l4" ng-repeat="lookList in lookLists">
+							    			<div  class="card">
+									            <a href=" " class="card-image">
+									              	<img src="{{lookList.headSrc}}">
+									              	<span class="card-title ellipsis">{{lookList.name}}</span>
+									            </a>
+									            <div class="card-content">
+									            	<time>{{lookList.date}}</time>
+									            </div>
+							    			</div>
+							    		</li>
+							    		<div class="clearfix"></div>
+							    	</ul>
+							    </div>
+							    <div id="test2">
+							    	<ul class="collapsible" data-collapsible="accordion">
+									    <li ng-repeat="lookHistoryList in lookHistoryLists">
+									      	<div class="collapsible-header">
+									      		<img class="col l3" src="{{lookHistoryList.pic}}"/>
+									      		<span class="col l9 ellipsis">{{lookHistoryList.title}}</span>
+									      		<div class="clearfix"></div>
+									      	</div>
+									      	<div class="collapsible-body">
+									      		<p>{{lookHistoryList.content}}</p>
+									      	</div>
+									    </li>
+									</ul>
+							    </div>
+							</div>
+		    			</div>
+		    			<div class="col l9 ">
+		    				<ul class="collapsible" data-collapsible="expandable">
+			    				<li class="xq">
+							      	<div class="collapsible-header active">
+							      		<ol class="collection">
+										    <li class="collection-item avatar">
+										    	<div class="head left">
+								              		<img src="img/girl.jpg" alt="">
+										    	</div>
+										    	<div class="left head-right">
+										      		<p class="title">RosePowder <span>如流水的人生,如大海的心怀</span></p>
+										    		<time class="left">17:50</time> <i class="material-icons">visibility</i> <span class="left">浏览(50)</span>
+										    	</div>
+										    	<div class="right" style="color: #888;">
+										    		收起 <span class="iconfont" ng-class="{'icon-jiantouyoujiantou1':!isDown,'icon-arrowup':isDown}"></span>
+										    	</div>
+										    	<div class="clearfix"></div>
+										    </li>
+										</ol>
+							      	</div>
+							      	<div class="collapsible-body">
+							      		<div class="card">
+								            <div class="card-content" ng-repeat="xqList in xqLists | filter:{id:1}">
+								             	<p>{{xqList.content}}</p>
+								             	<img src="{{xqList.textImg}}" style="width:200px ;"/>
+								            </div>
+								            <div class="card-action">
+										      	<ul class="suosuo-p-gro">
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">grade</i>
+											      			<span class="left">收藏</span>
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">thumb_up</i>
+											      			<span class="left">赞(<span id="addZan">14</span>)
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">supervisor_account</i>
+											      			<span class="left">分享</span>
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<div class="clearfix"></div>
+										      	</ul>
+										      	<ul class="suosuo-friends-content">
+										      		<li class="suosuo-friend" ng-repeat="suoList in suoLists">
+										      			<div class="left head" style="background-image: url({{suoList.headSrc}});"></div>
+										      			<div class="left content">
+										      				<a href="">{{suoList.name}}</a>
+															<time style="font-size: 0.8rem;">{{suoList.id | date:'HH:mm'}}</time> <i class="material-icons" style="font-size:0.9rem;color: #B85F7F;">textsms</i>
+															<div class="clearfix"></div>
+										      			</div>
+									      				<span class="left">: {{suoList.content}}</span>
+										      			<a class="right btn-remove" ng-click="remove(suoList.id)">&Chi;</a>
+										      			<div class="clearfix"></div>
+										      		</li>
+										      	</ul>
+										      	<div class="suosuo">
+											      	<textarea ng-model="text" placeholder="来评价一下吧..." autofocus style="resize:none;"></textarea>
+													<button class="btn btn-block right" ng-click="addSuoList()" >送上评价</button>
+													<div class="clearfix"></div>
+										      	</div>
+								            </div>
+								        </div>
+							      	</div>
+							    </li>
+							    <li class="xq">
+									<div class="collapsible-header active">
+							      		<ol class="collection">
+										    <li class="collection-item avatar">
+										    	<div class="head left">
+								              		<img src="img/girl.jpg" alt="">
+										    	</div>
+										    	<div class="left head-right">
+										      		<p class="title">RosePowder <span>如流水的人生,如大海的心怀</span></p>
+										    		<time class="left">17:50</time> <i class="material-icons">visibility</i> <span class="left">浏览(50)</span>
+										    	</div>
+										    	<div class="right" style="color: #888;">
+										    		收起 <span class="iconfont" ng-class="{'icon-jiantouyoujiantou1':!isDown,'icon-arrowup':isDown}"></span>
+										    	</div>
+										    	<div class="clearfix"></div>
+										    </li>
+										</ol>
+							      	</div>
+							      	<div class="collapsible-body">
+							      		<div class="card">
+							      			<div class="card-content" ng-repeat="xqList in xqLists | filter:{id:2}">
+								             	<p>{{xqList.content}}</p>
+										      	<img src="{{xqList.textImg}}" style="width:200px ;"/>
+								            </div>
+								            <div class="card-action">
+							      				<ul class="suosuo-p-gro">
+							      					<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">grade</i>
+											      			<span class="left">收藏</span>
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">thumb_up</i>
+											      			<span class="left">赞(<span id="addZan">14</span>)
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">supervisor_account</i>
+											      			<span class="left">分享</span>
+											      			<div class="clearfix"></div>
+											      		</a>
+										      		</li>
+										      		<div class="clearfix"></div>
+							      				</ul>
+							      				<ul class="suosuo-friends-content">
+										      		<li class="suosuo-friend" ng-repeat="suoList in suoLists">
+										      			<div class="left head" style="background-image: url({{suoList.headSrc}});"></div>
+										      			<div class="left content">
+										      				<a href="">{{suoList.name}}</a>
+															<time style="font-size: 0.8rem;">{{suoList.id | date:'HH:mm'}}</time> <i class="material-icons" style="font-size:0.9rem;color: #B85F7F;">textsms</i>
+															<div class="clearfix"></div>
+										      			</div>
+									      				<span class="left">: {{suoList.content}}</span>
+										      			<a class="right btn-remove" ng-click="remove(suoList.id)">&Chi;</a>
+										      			<div class="clearfix"></div>
+										      		</li>
+										      	</ul>
+										      	<div class="suosuo">
+													<textarea ng-model="text" placeholder="来评价一下吧..." autofocus style="resize:none;"></textarea>
+													<button class="btn btn-block right" ng-click="addSuoList()" >送上评价</button>
+													<div class="clearfix"></div>
+												</div>
+							      			</div>
+							      		</div>
+							      	</div>
+								</li>
+								<li class="xq">
+									<div class="collapsible-header active">
+							      		<ol class="collection">
+										    <li class="collection-item avatar">
+										    	<div class="head left">
+								              		<img src="img/girl.jpg" alt="">
+										    	</div>
+										    	<div class="left head-right">
+										      		<p class="title">RosePowder <span>如流水的人生,如大海的心怀</span></p>
+										    		<time class="left">17:50</time> <i class="material-icons">visibility</i> <span class="left">浏览(50)</span>
+										    	</div>
+										    	<div class="right" style="color: #888;">
+										    		收起 <span class="iconfont" ng-class="{'icon-jiantouyoujiantou1':!isDown,'icon-arrowup':isDown}"></span>
+										    	</div>
+										    	<div class="clearfix"></div>
+										    </li>
+										</ol>
+							      	</div>
+							      	<div class="collapsible-body">
+							      		<div class="card">
+							      			<div class="card-content" ng-repeat="xqList in xqLists | filter:{id:3}">
+								             	<p>{{xqList.content}}</p>
+										      	<img src="{{xqList.textImg}}" style="width:200px ;"/>
+								            </div>
+							      			<div class="card-action">
+							      				<ul class="suosuo-p-gro">
+							      					<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">grade</i>
+											      			<span class="left">收藏</span>
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">thumb_up</i>
+											      			<span class="left">赞(<span id="addZan">14</span>)
+											      			<div class="clearfix"></div>
+											      		</a>
+											      		<span class="after-fgx"></span>
+										      		</li>
+										      		<li class="left" onclick="btnActive(this)">
+											      		<a href="" class="suosuo-p">
+											      			<i class="material-icons left">supervisor_account</i>
+											      			<span class="left">分享</span>
+											      			<div class="clearfix"></div>
+											      		</a>
+										      		</li>
+										      		<div class="clearfix"></div>
+							      				</ul>
+							      				<ul class="suosuo-friends-content">
+										      		<li class="suosuo-friend" ng-repeat="suoList in suoLists">
+										      			<div class="left head" style="background-image: url({{suoList.headSrc}});"></div>
+										      			<div class="left content">
+										      				<a href="">{{suoList.name}}</a>
+															<time style="font-size: 0.8rem;">{{suoList.id | date:'HH:mm'}}</time> <i class="material-icons" style="font-size:0.9rem;color: #B85F7F;">textsms</i>
+															<div class="clearfix"></div>
+										      			</div>
+									      				<span class="left">: {{suoList.content}}</span>
+										      			<a class="right btn-remove" ng-click="remove(suoList.id)">&Chi;</a>
+										      			<div class="clearfix"></div>
+										      		</li>
+										      	</ul>
+							      				<div class="suosuo">
+													<textarea ng-model="text" placeholder="来评价一下吧..." autofocus style="resize:none;"></textarea>
+													<button class="btn btn-block right" ng-click="addSuoList()" >送上评价</button>
+													<div class="clearfix"></div>
+												</div>
+							      			</div>
+							      		</div>
+							      	</div>
+								</li>
+						    </ul>
+		    			</div>
+		    		</div>
+		    	</div>
+		    </script>
+		    <!--定义模板2-- 相册集 picCollection--->
+		    <script type="text/ng-template" id="tmp2">
+		    	<div class="tmp2">
+		    		<ul class="row">
+		    			<li class="col l3" ng-repeat="x in [1,2,3,4]">
+		    				<div class="card">
+							    <div class="card-image waves-effect waves-block waves-light"  ng-repeat="img in imgs">
+							      	<!--<img class="activator" src="{{img.imgSrc}}">-->
+							    </div>
+							    <!--<div class="card-content">
+							      	<!--<span class="card-title activator grey-text text-darken-4">{{img.title}}<i class="material-icons right">more_vert</i></span>-->
+							    <!--</div>-->
+							    <!--<div class="card-reveal">-->
+							      	<!--<span class="card-title grey-text text-darken-4">{{img.title}}<i class="material-icons right">close</i></span>-->
+							    <!--</div>-->
+							</div>
+		    			</li>
+		    			<div class="clearfix"></div>
+		    		</ul>
+		    	</div>
+		    </script>
+			<!--定义模板3-- 留言板 massageBoard--->
+		    <script type="text/ng-template" id="tmp3">
+		    	<div class="tmp3">
+		    		<div class="bg-fixed">
+		    			<img src="img/text-border.png"/>
+		    		</div>
+		    		<header>
+			    		<h2>Massage Board</h2>
+			    		<p>留言板</p>
+		    		</header>
+			       	<article class="col l8 offset-l2">
+			       		<div class="card">
+				            <div class="card-content">
+				             	<ul class="addZuji">
+				             		<li style="width: 90%;">
+								      	<input type="text" placeholder="留下你的足迹吧..." value=""/>
+				             		</li>
+				             		<li class="addBtn" style="width: 10%;" ng-click = "addZuojiList()">
+							      		<a href="">留下脚印</a>
+				             		</li>
+						      		<div class="clearfix"></div>
+						      	</ul>
+				            </div>
+				            <div class="card-action">
+						      	<ul class="zuji-firends-content">
+						      		<li class="zuji-firend row " ng-repeat="zujiList in zujiLists">
+					      				<div class="col l1 head" style="background-image: url({{zujiList.imgSrc}});"></div>
+						      			<div class="col l11">
+							      			<ol class="zuji-firend-content">
+							      				<li class="content-name">
+									      			<a href="">{{zujiList.name}}</a>
+							      				</li>
+							      				<li class="content">
+							      					<span>{{zujiList.content}}</span>
+							      				</li>
+							      			</ol>
+							      			<div class="zuji-firend-time">
+								    			<time style="font-size: 0.8rem;">{{zujiList.id | date:'yyyy-MM-dd HH:mm'}}</time>&nbsp;&nbsp;&nbsp;&nbsp;
+								    			<span style="font-size:0.9rem;color: #B85F7F;cursor: pointer;" ng-click="removezuji(zujiList.id)">删除</span>&nbsp;&nbsp;&nbsp;&nbsp;
+							      			</div>
+						      			</div>
+						      		</li>
+						      	</ul>
+				            </div>
+				        </div>
+			       	</article>
+		    	</div>
+		    </script>
+			<a id="go_top" class="btn-floating">Top</a>
+		</section>
+		
+		<script src="js/jquery-1.11.1.js"></script>
+		<script src="js/materialize.js"></script>
+		<script src="js/PB.js"></script>
+	</body>
+</html>
